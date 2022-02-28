@@ -6,7 +6,7 @@ import lombok.*;
 /**
  * 业务异常
  *
- * @author dazzlzy
+ * @author hwj
  * @date 2018/3/22
  */
 @EqualsAndHashCode(callSuper = true)

@@ -12,7 +12,7 @@ import java.io.Serializable;
  * 响应结果
  * 如果使用注解@JsonInclude(JsonInclude.Include.NON_NULL)： 则会保证序列化json的时候,如果是null的对象,key也会消失
  *
- * @author dazzlzy
+ * @author hwj
  * @date 2018/3/21
  */
 @Data

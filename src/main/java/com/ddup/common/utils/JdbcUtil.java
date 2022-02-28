@@ -12,7 +12,7 @@ import java.util.Map;
 /**
  * jdbc工具类，可直接执行sql
  *
- * @author dazzlzy
+ * @author hwj
  * @date 2018/4/11
  */
 @Slf4j

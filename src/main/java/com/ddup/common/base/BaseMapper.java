@@ -8,7 +8,7 @@ import tk.mybatis.mapper.common.special.InsertListMapper;
 /**
  * 自定义mapper接口，继承tk.mybatis.common.Mapper
  *
- * @author dazzlzy
+ * @author hwj
  * @date 2018/4/1
  */
 public interface BaseMapper<T> extends tk.mybatis.mapper.common.BaseMapper<T>,

@@ -10,7 +10,7 @@ import static javax.servlet.DispatcherType.*;
 /**
  * Log4j2在web中的过滤器 过滤REQUEST, FORWARD, INCLUDE, ERROR, ASYNC类型请求
  *
- * @author dazzlzy
+ * @author hwj
  * @date 2018/5/19
  */
 @Configuration

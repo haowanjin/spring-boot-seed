@@ -12,7 +12,7 @@ import java.util.*;
 /**
  * redis操作类
  *
- * @author dazzlzy
+ * @author hwj
  * @date 2018/5/20
  */
 @Slf4j

@@ -16,7 +16,7 @@ import java.util.Arrays;
  * 测试Controller
  * 使用@RestController可以不需要使用@ResponseBody注解，方法会自动处理成json格式返回
  *
- * @author dazzlzy
+ * @author hwj
  * @date 2018/5/22
  */
 @Slf4j

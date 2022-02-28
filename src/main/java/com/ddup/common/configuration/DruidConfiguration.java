@@ -17,7 +17,7 @@ import java.sql.SQLException;
 /**
  * Druid 配置注入
  *
- * @author dazzlzy
+ * @author hwj
  * @date 2018/5/18
  */
 @Slf4j

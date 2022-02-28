@@ -6,7 +6,7 @@ import com.ddup.springbootseed.model.user.UserRole;
 /**
  * 用户角色Mapper
  *
- * @author dazzlzy
+ * @author hwj
  * @date 2018/5/19
  */
 public interface UserRoleMapper extends BaseMapper<UserRole> {

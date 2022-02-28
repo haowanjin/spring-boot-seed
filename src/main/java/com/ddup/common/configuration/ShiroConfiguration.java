@@ -19,7 +19,7 @@ import java.util.Map;
 /**
  * shiro配置注入
  *
- * @author dazzlzy
+ * @author hwj
  * @date 2018/5/26
  */
 @Configuration

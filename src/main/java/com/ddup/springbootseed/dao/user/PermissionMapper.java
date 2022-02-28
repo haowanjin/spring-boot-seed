@@ -6,7 +6,7 @@ import com.ddup.springbootseed.model.user.Permission;
 /**
  * 权限Mapper
  *
- * @author dazzlzy
+ * @author hwj
  * @date 2018/5/19
  */
 public interface PermissionMapper extends BaseMapper<Permission> {

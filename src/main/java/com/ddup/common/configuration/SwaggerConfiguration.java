@@ -16,7 +16,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 /**
  * Swagger配置
  *
- * @author dazzlzy
+ * @author hwj
  * @date 2018/5/22
  */
 @Configuration
@@ -39,7 +39,7 @@ public class SwaggerConfiguration {
                 .apiInfo(apiInfo())
                 .select()
                 //.apis(RequestHandlerSelectors.withMethodAnnotation(ResponseBody.class))
-                .apis(RequestHandlerSelectors.basePackage("com.dazzlzy.springbootseed.controller"))
+                .apis(RequestHandlerSelectors.basePackage("com.ddup.springbootseed.controller"))
                 .paths(PathSelectors.any())
                 .build()
                 .enable(swaggerEnable)

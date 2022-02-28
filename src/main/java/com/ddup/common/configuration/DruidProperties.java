@@ -6,7 +6,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 /**
  * Druid注入的配置参数
  *
- * @author dazzlzy
+ * @author hwj
  * @date 2018/5/18
  */
 @Data

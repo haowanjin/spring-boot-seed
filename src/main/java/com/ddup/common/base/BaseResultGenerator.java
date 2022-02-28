@@ -7,7 +7,7 @@ import com.ddup.common.exception.BusinessException;
 /**
  * BaseResult生成器
  *
- * @author dazzlzy
+ * @author hwj
  * @date 2018/4/1
  */
 public class BaseResultGenerator {

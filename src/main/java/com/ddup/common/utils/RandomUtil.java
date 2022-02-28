@@ -8,7 +8,7 @@ import java.util.UUID;
 /**
  * 随机数工具类
  *
- * @author dazzlzy
+ * @author hwj
  * @date 2018/5/19
  */
 @Slf4j

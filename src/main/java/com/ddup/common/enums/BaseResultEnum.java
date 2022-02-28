@@ -5,7 +5,7 @@ import lombok.Getter;
 /**
  * BaseResult的code编码枚举
  *
- * @author dazzlzy
+ * @author hwj
  * @date 2018/3/21
  */
 @Getter

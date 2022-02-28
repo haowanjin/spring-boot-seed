@@ -5,7 +5,7 @@ import lombok.Getter;
 /**
  * Cookie枚举
  *
- * @author dazzlzy
+ * @author hwj
  * @date 2018/5/26
  */
 @Getter

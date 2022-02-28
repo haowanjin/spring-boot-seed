@@ -7,7 +7,7 @@ import org.junit.Test;
 /**
  * RandomUtil的单元测试
  *
- * @author dazzlzy
+ * @author hwj
  * @date 2018/5/27
  */
 @Slf4j

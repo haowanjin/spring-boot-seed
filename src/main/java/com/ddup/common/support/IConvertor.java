@@ -3,7 +3,7 @@ package com.ddup.common.support;
 /**
  * 转换器接口，可以将Source转换为Target
  *
- * @author dazzlzy
+ * @author hwj
  * @date 2018/5/9
  */
 public interface IConvertor<Source, Target> {

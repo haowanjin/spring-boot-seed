@@ -15,7 +15,7 @@ import java.util.List;
 /**
  * Redis配置注入，使用spring-data-redis自动装配的RedisProperties，设置Jedis的配置
  *
- * @author dazzlzy
+ * @author hwj
  * @date 2018/5/20
  */
 @Configuration

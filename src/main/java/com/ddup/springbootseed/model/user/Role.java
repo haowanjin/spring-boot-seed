@@ -9,7 +9,7 @@ import javax.persistence.*;
 /**
  * 角色
  *
- * @author dazzlzy
+ * @author hwj
  * @date 2018/5/19
  */
 @Data

@@ -5,7 +5,7 @@ import com.ddup.springbootseed.model.user.Role;
 /**
  * 角色Service接口
  *
- * @author dazzlzy
+ * @author hwj
  * @date 2018/5/27
  */
 public interface IRoleService {

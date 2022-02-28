@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * 用户Mapper
  *
- * @author dazzlzy
+ * @author hwj
  * @date 2018/5/19
  */
 public interface UserMapper extends BaseMapper<User> {

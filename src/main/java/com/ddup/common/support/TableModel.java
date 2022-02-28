@@ -6,7 +6,7 @@ import lombok.Data;
 /**
  * mybatis generator util用的表模型
  *
- * @author dazzlzy
+ * @author hwj
  * @date 2018/5/7
  */
 @Data

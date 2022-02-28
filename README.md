@@ -6,7 +6,7 @@ SpringBoot的种子框架项目，个人学习使用，集成一些常用的框�
 #### 软件架构
 ```
 spring-boot-seed  
-├── src/main/java/com.dazzlzy  
+├── src/main/java/com.ddup  
 |   ├── common -- 通用代码包  
 |   |    ├── base -- 项目基础包  
 |   |    ├── configuration -- springboot的配置注入  

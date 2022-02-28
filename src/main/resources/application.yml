@@ -37,8 +37,8 @@ project:
 ###############################################################################
 ## mybatis
 mybatis:
-  type-aliases-package: com.dazzlzy.springbootseed.model
-  type-handlers-package: com.dazzlzy.springbootseed.dao
+  type-aliases-package: com.ddup.springbootseed.model
+  type-handlers-package: com.ddup.springbootseed.dao
   mapper-locations: classpath*:mapper/**/*.xml
 ###############################################################################
 ## mapper

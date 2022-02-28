@@ -8,7 +8,7 @@ import javax.persistence.*;
 /**
  * 用户角色关系
  *
- * @author dazzlzy
+ * @author hwj
  * @date 2018/5/19
  */
 @Data

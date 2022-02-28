@@ -17,7 +17,7 @@ import java.util.List;
 /**
  * 生成mybatis代码
  *
- * @author dazzlzy
+ * @author hwj
  * @date 2018/4/26
  */
 @Slf4j
@@ -40,14 +40,14 @@ public class MybatisGenerator {
     private static final String PATH_MAVEN_RESOURCE = "/src/main/resources";
     private static final String PATH_TEMPLATE = PATH_PROJECT + PATH_MAVEN_RESOURCE + "/template";
 
-    private static final String PACKAGE_BASE = "com.dazzlzy.springbootseed";
+    private static final String PACKAGE_BASE = "com.ddup.springbootseed";
     private static final String PACKAGE_MODEL = PACKAGE_BASE + ".model";
     private static final String PACKAGE_DAO = PACKAGE_BASE + ".dao";
     private static final String PACKAGE_MAPPER = "/mapper";
     private static final String PACKAGE_SERVICE = PACKAGE_BASE + ".service";
     private static final String PACKAGE_CONTROLLER = PACKAGE_BASE + ".controller";
 
-    private static final String MAPPER_INTERFACE_REFERENCE = "com.dazzlzy.common.base.BaseMapper";
+    private static final String MAPPER_INTERFACE_REFERENCE = "com.ddup.common.base.BaseMapper";
 
 
     static {

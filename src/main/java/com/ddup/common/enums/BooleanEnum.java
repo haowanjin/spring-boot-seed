@@ -5,7 +5,7 @@ import lombok.Getter;
 /**
  * boolean枚举，YES/NO
  *
- * @author dazzlzy
+ * @author hwj
  * @date 2018/5/7
  */
 @Getter

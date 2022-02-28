@@ -14,11 +14,11 @@ import tk.mybatis.spring.annotation.MapperScan;
  * 使用@MapperScan注解是自动扫描注入mapper接口，如果不使用这个接口，可以在每个Mapper接口上增加@Mapper注解让springboot自动注入接口
  * 使用@EnableCaching注解开启缓存功能
  *
- * @author dazzlzy
+ * @author hwj
  * @date 2018/5/19
  */
 @SpringBootApplication
-@MapperScan(basePackages = {"com.dazzlzy.springbootseed.dao"})
+@MapperScan(basePackages = {"com.ddup.springbootseed.dao"})
 @EnableCaching
 public class SpringBootSeedApplication {
 

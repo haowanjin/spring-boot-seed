@@ -2,11 +2,12 @@ package com.ddup.common.shiro;
 
 import com.ddup.common.enums.SessionEnum;
 import com.ddup.common.utils.SessionUtil;
-import com.ddup.springbootseed.model.user.Permission;
-import com.ddup.springbootseed.model.user.Role;
-import com.ddup.springbootseed.model.user.User;
+import com.ddup.springbootseed.model.Menu;
+import com.ddup.springbootseed.model.Role;
+import com.ddup.springbootseed.model.User;
 import com.ddup.springbootseed.service.IShiroService;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
@@ -74,15 +75,17 @@ public class BaseRealm extends AuthorizingRealm {
                 roleCodes.add(role.getRoleCode());
             }
             //添加角色
-            authorizationInfo.addRoles(roleCodes);
+            authorizationInfo.setRoles(roleCodes);
 
             Set<String> stringPermissions = new HashSet<>();
-            List<Permission> permissions = user.getPermissions();
-            for (Permission permission : permissions) {
-                stringPermissions.add(permission.getPermissionCode());
+            List<Menu> menus = user.getMenus();
+            for (Menu menu : menus) {
+                if (StringUtils.isNotBlank(menu.getPerms())) {
+                    stringPermissions.add(menu.getPerms());
+                }
             }
             // 添加权限
-            authorizationInfo.addStringPermissions(stringPermissions);
+            authorizationInfo.setStringPermissions(stringPermissions);
         }
 
         return authorizationInfo;
@@ -107,7 +110,7 @@ public class BaseRealm extends AuthorizingRealm {
             UsernamePasswordToken token = (UsernamePasswordToken) authenticationToken;
             user = shiroService.login(null, token.getUsername(), String.valueOf(token.getPassword()));
             if (user != null) {
-                authenticationInfo = new SimpleAuthenticationInfo(token.getUsername(), token.getPassword(), this.getName());
+                authenticationInfo = new SimpleAuthenticationInfo(user, token.getPassword(), this.getName());
             }
         } else if (authenticationToken instanceof IdPasswordToken) {
             log.info("Use IdPasswordToken for authentication");
@@ -118,7 +121,6 @@ public class BaseRealm extends AuthorizingRealm {
                 authenticationInfo = new SimpleAuthenticationInfo(token.getId(), token.getPassword(), this.getName());
             }
         }
-
         if (user != null) {
             SessionUtil.setAttribute(SessionEnum.CURRENT_USER, user);
         }

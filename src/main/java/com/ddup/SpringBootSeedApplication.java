@@ -3,7 +3,11 @@ package com.ddup;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cache.annotation.EnableCaching;
+import org.springframework.scheduling.annotation.EnableAsync;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 import tk.mybatis.spring.annotation.MapperScan;
+
+import javax.annotation.meta.TypeQualifierNickname;
 
 /**
  * spring-boot-seed启动主程序
@@ -18,8 +22,10 @@ import tk.mybatis.spring.annotation.MapperScan;
  * @date 2018/5/19
  */
 @SpringBootApplication
-@MapperScan(basePackages = {"com.ddup.springbootseed.dao"})
+@MapperScan(basePackages = {"com.ddup.springbootseed.mapper"})
 @EnableCaching
+@EnableAsync
+@EnableTransactionManagement
 public class SpringBootSeedApplication {
 
     public static void main(String[] args) {

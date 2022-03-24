@@ -1,7 +1,7 @@
 package com.ddup.springbootseed.service;
 
 import com.ddup.SpringBootSeedApplicationTests;
-import com.ddup.springbootseed.model.user.User;
+import com.ddup.springbootseed.model.User;
 import junit.framework.TestCase;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;

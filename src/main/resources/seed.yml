@@ -1,0 +1,10 @@
+# cc.mrbird.febs.common.properties.SeedProperties
+seed:
+  enable-redis-cache: true
+  code:
+    time: PT60s
+    type: png
+    width: 115
+    height: 42
+    length: 4
+    char-type: 2

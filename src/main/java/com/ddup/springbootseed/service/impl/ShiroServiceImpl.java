@@ -2,7 +2,7 @@ package com.ddup.springbootseed.service.impl;
 
 import com.ddup.common.enums.BooleanEnum;
 import com.ddup.common.utils.PasswordUtil;
-import com.ddup.springbootseed.model.user.User;
+import com.ddup.springbootseed.model.User;
 import com.ddup.springbootseed.service.IShiroService;
 import com.ddup.springbootseed.service.IUserService;
 import org.apache.shiro.authc.IncorrectCredentialsException;

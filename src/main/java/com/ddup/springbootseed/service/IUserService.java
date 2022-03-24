@@ -1,6 +1,6 @@
 package com.ddup.springbootseed.service;
 
-import com.ddup.springbootseed.model.user.User;
+import com.ddup.springbootseed.model.User;
 
 import java.util.List;
 

@@ -1,7 +1,7 @@
 package com.ddup.common.utils;
 
 import com.ddup.common.enums.SessionEnum;
-import com.ddup.springbootseed.model.user.User;
+import com.ddup.springbootseed.model.User;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;

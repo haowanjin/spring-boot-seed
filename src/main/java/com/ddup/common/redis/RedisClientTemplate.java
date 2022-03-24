@@ -16,7 +16,7 @@ import java.util.*;
  * @date 2018/5/20
  */
 @Slf4j
-@Component
+@Component("redisService")
 public class RedisClientTemplate {
 
     /**
@@ -437,4 +437,54 @@ public class RedisClientTemplate {
         return result;
     }
 
+    public Long hset(String key, String field, String value) {
+        Long result = null;
+        ShardedJedis shardedJedis = getRedisClient();
+        if (shardedJedis == null) {
+            return null;
+        }
+        try {
+            result = shardedJedis.hset(key, field, value);
+
+        } catch (Exception e) {
+            log.error(e.getMessage(), e);
+        } finally {
+            shardedJedis.close();
+        }
+        return result;
+    }
+
+    public String hget(String key, String field) {
+        String result = null;
+        ShardedJedis shardedJedis = getRedisClient();
+        if (shardedJedis == null) {
+            return null;
+        }
+        try {
+            result = shardedJedis.hget(key, field);
+
+        } catch (Exception e) {
+            log.error(e.getMessage(), e);
+        } finally {
+            shardedJedis.close();
+        }
+        return result;
+    }
+
+    public List<String> hvals(String key) {
+        List<String> result = null;
+        ShardedJedis shardedJedis = getRedisClient();
+        if (shardedJedis == null) {
+            return null;
+        }
+        try {
+            result = shardedJedis.hvals(key);
+
+        } catch (Exception e) {
+            log.error(e.getMessage(), e);
+        } finally {
+            shardedJedis.close();
+        }
+        return result;
+    }
 }

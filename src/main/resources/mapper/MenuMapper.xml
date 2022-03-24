@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ddup.springbootseed.mapper.MenuMapper">
+    <resultMap id="BaseResultMap" type="com.ddup.springbootseed.model.Menu">
+        <id column="MENU_ID" jdbcType="DECIMAL" property="menuId"/>
+        <result column="PARENT_ID" jdbcType="DECIMAL" property="parentId"/>
+        <result column="MENU_NAME" jdbcType="VARCHAR" property="menuName"/>
+        <result column="URL" jdbcType="VARCHAR" property="url"/>
+        <result column="PERMS" jdbcType="VARCHAR" property="perms"/>
+        <result column="ICON" jdbcType="VARCHAR" property="icon"/>
+        <result column="TYPE" jdbcType="CHAR" property="type"/>
+        <result column="ORDER_NUM" jdbcType="DECIMAL" property="orderNum"/>
+        <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="MODIFY_TIME" jdbcType="TIMESTAMP" property="modifyTime"/>
+    </resultMap>
+
+    <sql id="menu_column_sql">
+        m.MENU_ID AS m_menu_id,
+        m.PARENT_ID AS m_parent_id,
+        m.MENU_NAME AS m_menu_name,
+        m.URL AS m_url,
+        m.PERMS AS m_perms,
+        m.ICON AS m_icon,
+        m.TYPE AS m_type,
+        m.ORDER_NUM AS m_order_num ,
+        m.CREATE_TIME AS m_create_time,
+        m.MODIFY_TIME AS m_modify_time
+    </sql>
+
+    <select id="findUserPermissions" resultMap="BaseResultMap">
+        SELECT
+            m.perms
+        FROM
+            sys_role r
+                LEFT JOIN sys_user_role ur ON (r.id = ur.role_id)
+                LEFT JOIN sys_user u ON (u.id = ur.user_id)
+                LEFT JOIN sys_role_menu rm ON (rm.role_id = r.id)
+                LEFT JOIN sys_menu m ON (m.menu_id = rm.menu_id)
+        WHERE
+            u.user_name = #{username}
+          AND m.perms is not null
+          AND m.perms &lt;&gt; ''
+
+    </select>
+
+    <select id="findUserMenus" resultMap="BaseResultMap">
+        SELECT
+            m.*
+        FROM
+        sys_menu m
+        WHERE
+        m.type &lt;&gt; 1
+        AND m.MENU_ID IN (
+        SELECT DISTINCT
+        rm.menu_id
+        FROM
+        sys_role_menu rm
+        LEFT JOIN sys_role r ON (rm.role_id = r.id)
+        LEFT JOIN sys_user_role ur ON (ur.role_id = r.id)
+        LEFT JOIN sys_user u ON (u.id = ur.user_id)
+        WHERE
+        u.user_name = #{username}
+        )
+        ORDER BY
+        m.order_num
+    </select>
+
+    <select id="selectByMenuName" resultMap="BaseResultMap">
+        SELECT
+            m.*
+        FROM sys_menu m
+    <where>
+        <if test="menu!=null and menu.menuName!=null and menu.menuName!=''">
+            m.MENU_NAME like CONCAT('%',#{menu.menuName},'%')
+        </if>
+    </where>
+    </select>
+</mapper>

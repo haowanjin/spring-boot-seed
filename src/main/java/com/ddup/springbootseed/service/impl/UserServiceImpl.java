@@ -3,8 +3,8 @@ package com.ddup.springbootseed.service.impl;
 import com.ddup.common.exception.BusinessException;
 import com.ddup.common.utils.PasswordUtil;
 import com.ddup.common.utils.RandomUtil;
-import com.ddup.springbootseed.dao.user.UserMapper;
-import com.ddup.springbootseed.model.user.User;
+import com.ddup.springbootseed.mapper.UserMapper;
+import com.ddup.springbootseed.model.User;
 import com.ddup.springbootseed.service.IUserService;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +27,9 @@ public class UserServiceImpl implements IUserService {
 
     @Override
     public User queryByIdOrName(Long userId, String userName) {
+        if (userId == null && StringUtils.isBlank(userName)) {
+            throw new BusinessException("userId & userName 不能都为空");
+        }
         return this.userMapper.selectUserByIdOrName(userId, userName);
     }
 
@@ -50,6 +53,7 @@ public class UserServiceImpl implements IUserService {
         // 密码密文
         String password = PasswordUtil.encrypt(user.getPassword(), salt);
         user.setPassword(password);
+        user.setStateCode(1);
         user.setCreateTime(now);
         user.setModifyTime(now);
         userMapper.insert(user);
@@ -64,7 +68,7 @@ public class UserServiceImpl implements IUserService {
         if (user == null) {
             throw new BusinessException("用户不存在");
         }
-        if (StringUtils.isBlank(user.getUserName())) {
+        if (StringUtils.isBlank(user.getUsername())) {
             throw new BusinessException("用户名不能为空");
         }
         if (StringUtils.isBlank(user.getPassword())) {

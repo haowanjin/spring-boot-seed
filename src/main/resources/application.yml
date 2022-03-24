@@ -17,7 +17,7 @@ spring:
   profiles:
     active: dev
   datasource:
-    driver-class-name: com.mysql.jdbc.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
 ###############################################################################
 ## 项目参数，从maven中读取
@@ -38,7 +38,7 @@ project:
 ## mybatis
 mybatis:
   type-aliases-package: com.ddup.springbootseed.model
-  type-handlers-package: com.ddup.springbootseed.dao
+  type-handlers-package: com.ddup.springbootseed.mapper
   mapper-locations: classpath*:mapper/**/*.xml
 ###############################################################################
 ## mapper
@@ -68,4 +68,6 @@ pagehelper:
 # 5). auto-runtime-dialect
 # 默认值为 false。设置为 true 时，允许在运行时根据多数据源自动识别对应方言的分页 （不支持自动选择sqlserver2012，只能使用sqlserver）。
   auto-runtime-dialect: true
+seed:
+  enable-redis-cache: true
 ###############################################################################

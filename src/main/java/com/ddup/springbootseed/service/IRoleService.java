@@ -1,6 +1,6 @@
 package com.ddup.springbootseed.service;
 
-import com.ddup.springbootseed.model.user.Role;
+import com.ddup.springbootseed.model.Role;
 
 /**
  * 角色Service接口

@@ -2,7 +2,7 @@ package com.ddup.springbootseed.service;
 
 import com.ddup.SpringBootSeedApplicationTests;
 import com.ddup.common.enums.BooleanEnum;
-import com.ddup.springbootseed.model.user.User;
+import com.ddup.springbootseed.model.User;
 import junit.framework.TestCase;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
@@ -51,7 +51,7 @@ public class IUserServiceTest extends SpringBootSeedApplicationTests {
     @Test
     public void addUser(){
         User user = new User();
-        user.setUserName("admin_abc");
+        user.setUsername("admin_abc");
         user.setPassword("123456");
         user.setNickName("ADMINABC");
         user.setEmail("123@abc.com");

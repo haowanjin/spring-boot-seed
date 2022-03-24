@@ -1,8 +1,8 @@
 package com.ddup.springbootseed.service.impl;
 
 import com.ddup.common.exception.BusinessException;
-import com.ddup.springbootseed.dao.user.RoleMapper;
-import com.ddup.springbootseed.model.user.Role;
+import com.ddup.springbootseed.mapper.RoleMapper;
+import com.ddup.springbootseed.model.Role;
 import com.ddup.springbootseed.service.IRoleService;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;

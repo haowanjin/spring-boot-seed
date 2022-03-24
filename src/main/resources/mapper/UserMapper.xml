@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ddup.springbootseed.mapper.UserMapper">
+    <resultMap id="BaseResultMap" type="com.ddup.springbootseed.model.User">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="dept_id" jdbcType="BIGINT" property="deptId"/>
+        <result column="sex" jdbcType="TINYINT" property="sex"/>
+        <result column="avatar" jdbcType="VARCHAR" property="avatar"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime"/>
+        <result column="state_code" jdbcType="INTEGER" property="stateCode"/>
+        <result column="user_name" jdbcType="VARCHAR" property="username"/>
+        <result column="nick_name" jdbcType="VARCHAR" property="nickName"/>
+        <result column="password" jdbcType="VARCHAR" property="password"/>
+        <result column="salt" jdbcType="VARCHAR" property="salt"/>
+        <result column="email" jdbcType="VARCHAR" property="email"/>
+        <result column="phone" jdbcType="VARCHAR" property="phone"/>
+        <result column="mobile" jdbcType="VARCHAR" property="mobile"/>
+        <result column="last_login_time" jdbcType="TIMESTAMP" property="lastLoginTime"/>
+    </resultMap>
+
+    <resultMap id="UserMap" type="com.ddup.springbootseed.model.User">
+        <id column="u_id" jdbcType="BIGINT" property="id"/>
+        <result column="u_create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="u_modify_time" jdbcType="TIMESTAMP" property="modifyTime"/>
+        <result column="u_state_code" jdbcType="INTEGER" property="stateCode"/>
+        <result column="u_user_name" jdbcType="VARCHAR" property="username"/>
+        <result column="u_nick_name" jdbcType="VARCHAR" property="nickName"/>
+        <result column="u_sex" jdbcType="VARCHAR" property="sex"/>
+        <result column="u_dept_id" jdbcType="VARCHAR" property="deptId"/>
+        <result column="u_open_id" jdbcType="VARCHAR" property="openId"/>
+        <result column="u_union_id" jdbcType="VARCHAR" property="unionId"/>
+        <result column="u_password" jdbcType="VARCHAR" property="password"/>
+        <result column="u_salt" jdbcType="VARCHAR" property="salt"/>
+        <result column="u_email" jdbcType="VARCHAR" property="email"/>
+        <result column="u_phone" jdbcType="VARCHAR" property="phone"/>
+        <result column="u_mobile" jdbcType="VARCHAR" property="mobile"/>
+        <result column="u_avatar" jdbcType="VARCHAR" property="avatar"/>
+        <result column="u_last_login_time" jdbcType="TIMESTAMP" property="lastLoginTime"/>
+        <collection property="roles" ofType="com.ddup.springbootseed.model.Role"
+                    resultMap="RoleMap"/>
+        <collection property="menus" ofType="com.ddup.springbootseed.model.Menu"
+                    resultMap="MenuMap"/>
+    </resultMap>
+
+    <resultMap id="RoleMap" type="com.ddup.springbootseed.model.Role">
+        <id column="r_id" jdbcType="BIGINT" property="id"/>
+        <result column="r_create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="r_modify_time" jdbcType="TIMESTAMP" property="modifyTime"/>
+        <result column="r_state_code" jdbcType="INTEGER" property="stateCode"/>
+        <result column="r_role_name" jdbcType="VARCHAR" property="roleName"/>
+        <result column="r_role_code" jdbcType="VARCHAR" property="roleCode"/>
+        <result column="r_description" jdbcType="VARCHAR" property="description"/>
+        <collection property="menus" ofType="com.ddup.springbootseed.model.Menu"
+                    resultMap="MenuMap"/>
+    </resultMap>
+
+    <resultMap id="MenuMap" type="com.ddup.springbootseed.model.Menu">
+        <id column="m_menu_id" jdbcType="DECIMAL" property="menuId"/>
+        <result column="m_parent_id" jdbcType="DECIMAL" property="parentId"/>
+        <result column="m_menu_name" jdbcType="VARCHAR" property="menuName"/>
+        <result column="m_url" jdbcType="VARCHAR" property="url"/>
+        <result column="m_perms" jdbcType="VARCHAR" property="perms"/>
+        <result column="m_icon" jdbcType="VARCHAR" property="icon"/>
+        <result column="m_type" jdbcType="CHAR" property="type"/>
+        <result column="m_order_num" jdbcType="DECIMAL" property="orderNum"/>
+        <result column="m_create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="m_modify_time" jdbcType="TIMESTAMP" property="modifyTime"/>
+    </resultMap>
+
+
+    <sql id="user_column_sql">
+        u.id AS u_id,
+        u.open_id AS u_open_id,
+        u.union_id as u_union_id,
+        u.state_code AS u_state_code,
+        u.user_name AS u_user_name,
+        u.nick_name AS u_nick_name,
+        u.password AS u_password,
+        u.sex AS u_sex,
+        u.salt AS u_salt,
+        u.email AS u_email,
+        u.phone AS u_phone,
+        u.mobile AS u_mobile,
+        u.avatar AS u_avatar,
+        u.last_login_time AS u_last_login_time,
+        u.create_time AS u_create_time,
+        u.modify_time AS u_modify_time
+    </sql>
+    <sql id="role_column_sql">
+        r.id AS r_id,
+        r.create_time AS r_create_time,
+        r.modify_time AS r_modify_time,
+        r.state_code AS r_state_code,
+        r.role_name AS r_role_name,
+        r.role_code AS r_role_code,
+        r.description AS r_description
+    </sql>
+    <sql id="menu_column_sql">
+        m.MENU_ID AS m_menu_id,
+        m.PARENT_ID AS m_parent_id,
+        m.MENU_NAME AS m_menu_name,
+        m.URL AS m_url,
+        m.PERMS AS m_perms,
+        m.ICON AS m_icon,
+        m.TYPE AS m_type,
+        m.ORDER_NUM AS m_order_num ,
+        m.CREATE_TIME AS m_create_time,
+        m.MODIFY_TIME AS m_modify_time
+    </sql>
+
+    <select id="selectUser" resultMap="UserMap">
+        SELECT
+        <include refid="user_column_sql"/>,
+        <include refid="role_column_sql"/>,
+        <include refid="menu_column_sql"/>
+        FROM sys_user u
+        LEFT JOIN sys_user_role ur ON u.id = ur.user_id
+        LEFT JOIN sys_role r ON ur.role_id = r.id
+        LEFT JOIN sys_role_menu rm on rm.role_id=r.id
+        LEFT JOIN sys_menu m ON m.menu_id=rm.menu_id
+        <include refid="selectUser_where_sql"/>
+    </select>
+    <select id="selectUserByIdOrName" resultMap="UserMap">
+        SELECT
+        <include refid="user_column_sql"/>,
+        <include refid="role_column_sql"/>,
+        <include refid="menu_column_sql"/>
+        FROM sys_user u
+        LEFT JOIN sys_user_role ur ON u.id = ur.user_id
+        LEFT JOIN sys_role r ON ur.role_id = r.id
+        LEFT JOIN sys_role_menu rm on rm.role_id=r.id
+        LEFT JOIN sys_menu m ON m.menu_id=rm.menu_id
+        <include refid="selectUserByIdOrName_where_sql"/>
+    </select>
+    <select id="selectUserByIds" resultMap="UserMap">
+        SELECT
+        <include refid="user_column_sql"/>,
+        <include refid="role_column_sql"/>,
+        <include refid="menu_column_sql"/>
+        FROM sys_user u
+        LEFT JOIN sys_user_role ur ON u.id = ur.user_id
+        LEFT JOIN sys_role r ON ur.role_id = r.id
+        LEFT JOIN sys_role_menu rm on rm.role_id=r.id
+        LEFT JOIN sys_menu m ON m.menu_id=rm.menu_id
+        <include refid="selectUserByIds_where_sql"/>
+    </select>
+    <select id="selectUserByOpenId" resultMap="UserMap">
+        SELECT
+        <include refid="user_column_sql"/>,
+        <include refid="role_column_sql"/>,
+        <include refid="menu_column_sql"/>
+        FROM sys_user u
+        LEFT JOIN sys_user_role ur ON u.id = ur.user_id
+        LEFT JOIN sys_role r ON ur.role_id = r.id
+        LEFT JOIN sys_role_menu rm on rm.role_id=r.id
+        LEFT JOIN sys_menu m ON m.menu_id=rm.menu_id
+        <include refid="selectUserByOpenId_where_sql"/>
+    </select>
+    <select id="selectUserByUnionId" resultMap="UserMap">
+        SELECT
+        <include refid="user_column_sql"/>,
+        <include refid="role_column_sql"/>,
+        <include refid="menu_column_sql"/>
+        FROM sys_user u
+        LEFT JOIN sys_user_role ur ON u.id = ur.user_id
+        LEFT JOIN sys_role r ON ur.role_id = r.id
+        LEFT JOIN sys_role_menu rm on rm.role_id=r.id
+        LEFT JOIN sys_menu m ON m.menu_id=rm.menu_id
+        <include refid="selectUserByUnionId_where_sql"/>
+    </select>
+    <select id="selectUserByMobile" resultType="com.ddup.springbootseed.model.User">
+        SELECT
+        <include refid="user_column_sql"/>,
+        <include refid="role_column_sql"/>,
+        <include refid="menu_column_sql"/>
+        FROM sys_user u
+        LEFT JOIN sys_user_role ur ON u.id = ur.user_id
+        LEFT JOIN sys_role r ON ur.role_id = r.id
+        LEFT JOIN sys_role_menu rm on rm.role_id=r.id
+        LEFT JOIN sys_menu m ON m.menu_id=rm.menu_id
+        <where>
+            u.phone=#{mobile} or u.mobile=#{mobile}
+        </where>
+    </select>
+
+    <sql id="selectUser_where_sql">
+        <where>
+            <if test="user.id != null">
+                and u.id = #{user.id}
+            </if>
+            <if test="user.userName != null and user.userName != '' ">
+                and u.user_name = #{user.userName}
+            </if>
+            <if test="user.nickName != null and user.nickName != '' ">
+                and u.nick_name = #{user.nickName}
+            </if>
+            <if test="user.unionId != null and user.unionId != '' ">
+                and u.union_id = #{user.unionId}
+            </if>
+            <if test="user.openId != null and user.openId != '' ">
+                and u.open_id = #{user.openId}
+            </if>
+            <if test="user.email != null and user.email != '' ">
+                and u.email = #{user.email}
+            </if>
+            <if test="user.phone != null and user.phone != '' ">
+                and u.phone = #{user.phone}
+            </if>
+            <if test="user.mobile != null and user.mobile != '' ">
+                and u.mobile = #{user.mobile}
+            </if>
+
+        </where>
+    </sql>
+    <sql id="selectUserByIdOrName_where_sql">
+        <where>
+            <if test="id != null">
+                and u.id = #{id}
+            </if>
+            <if test="name != null and name != '' ">
+                and u.user_name = #{name}
+            </if>
+        </where>
+    </sql>
+    <sql id="selectUserByIds_where_sql">
+        <where>
+            <if test="ids != null and ids.size > 0">
+                u.id IN
+                <foreach collection="ids" item="id" open="(" separator="," close=")">
+                    #{id}
+                </foreach>
+            </if>
+        </where>
+    </sql>
+    <sql id="selectUserByOpenId_where_sql">
+        <where>
+            <if test="openId !=null and openId!=''"></if>
+            u.union_id = #{openId}
+        </where>
+    </sql>
+    <sql id="selectUserByUnionId_where_sql">
+        <where>
+            <if test="unionId !=null and unionId!=''"></if>
+            u.union_id = #{unionId}
+        </where>
+    </sql>
+</mapper>

@@ -2,7 +2,7 @@ package com.ddup.springbootseed.service;
 
 import com.ddup.SpringBootSeedApplicationTests;
 import com.ddup.common.enums.BooleanEnum;
-import com.ddup.springbootseed.model.user.Role;
+import com.ddup.springbootseed.model.Role;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
